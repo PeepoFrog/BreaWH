@@ -44,14 +44,12 @@ func (g *Gui) MakeGui() fyne.CanvasObject {
 	setDefaultTimer()
 	g.mainContent = container.NewStack()
 	g.mainContent.Objects = []fyne.CanvasObject{settingsMenu()} //settingsMenu()
+	startStopButton := widget.NewButton("START", func() {
 
-	content := container.NewBorder(nil,
-		widget.NewButton("START", func() {
-			g.StartBreathing()
-		}), nil, nil,
+		g.StartBreathing()
+	})
 
-		g.mainContent,
-	)
+	content := container.NewBorder(nil, startStopButton, nil, nil, g.mainContent)
 	// content := container.NewVBox(
 	// 	makeBreatheHoldCnahgerRow(),
 
